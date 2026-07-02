@@ -1,0 +1,28 @@
+---
+interface Props {
+  text: string;
+  variant?: 'primary' | 'secondary';
+  href?: string;
+  class?: string;
+}
+
+const { text, variant = 'primary', href, class: className = '' } = Astro.props;
+
+const baseClasses = 'inline-flex items-center gap-2 px-6 py-3 rounded-bento font-medium transition-all duration-300 tracking-editorial';
+const variants = {
+  primary: 'bg-accent-gradient text-white hover:opacity-90 shadow-lg shadow-accent-teal/20',
+  secondary: 'bg-transparent text-carbon border border-carbon/[0.15] hover:border-carbon/[0.3]',
+};
+---
+
+{href ? (
+  <a href={href} class={`${baseClasses} ${variants[variant]} ${className}`}>
+    {text}
+    <span class="icon-wrapper"><Icon name="arrow" /></span>
+  </a>
+) : (
+  <button class={`${baseClasses} ${variants[variant]} ${className}`}>
+    {text}
+    <span class="icon-wrapper"><Icon name="arrow" /></span>
+  </button>
+)}

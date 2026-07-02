@@ -1,0 +1,28 @@
+---
+import { content } from '../../data/content';
+import SectionTag from '../../components/atoms/SectionTag.astro';
+import BentoCard from '../../components/molecules/BentoCard.astro';
+---
+
+<section id="ecosystem" class="px-6 py-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16" data-animate>
+      <SectionTag text={content.ecosystem.sectionTag} />
+      <h2 class="text-4xl md:text-5xl font-display font-bold tracking-editorial mt-6">
+        {content.ecosystem.title}
+      </h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {content.ecosystem.cards.map((card, index) => (
+        <BentoCard
+          icon={card.icon}
+          title={card.title}
+          description={card.description}
+          features={card.features}
+          delay={(index + 1).toString()}
+        />
+      ))}
+    </div>
+  </div>
+</section>

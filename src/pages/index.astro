@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/organisms/Hero.astro';
+import Ecosystem from '../components/organisms/Ecosystem.astro';
+import Philosophy from '../components/organisms/Philosophy.astro';
+import WhiteGlove from '../components/organisms/WhiteGlove.astro';
+import { content } from '../data/content';
+---
+
+<BaseLayout title="Desarrollo Web Express de Autor">
+  <main>
+    <Hero />
+    <Ecosystem />
+    <Philosophy />
+    <WhiteGlove />
+    
+    <!-- Footer mínimo -->
+    <footer class="px-6 py-12 border-t border-carbon/[0.08]">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-carbon/50">{content.footer.copyright}</p>
+        <p class="text-xs font-mono tracking-metadata text-carbon/40">{content.footer.signature}</p>
+      </div>
+    </footer>
+  </main>
+</BaseLayout>

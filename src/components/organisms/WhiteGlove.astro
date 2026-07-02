@@ -1,0 +1,67 @@
+---
+import { content } from '../../data/content';
+import SectionTag from '../../components/atoms/SectionTag.astro';
+import Button from '../../components/atoms/Button.astro';
+import Icon from '../../components/atoms/Icon.astro';
+---
+
+<section id="whiteglove" class="px-6 py-24">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-12 text-center" data-animate>
+      <SectionTag text={content.whiteGlove.sectionTag} />
+      <h2 class="text-4xl md:text-5xl font-display font-bold tracking-editorial mt-6 mb-4">
+        {content.whiteGlove.title}
+      </h2>
+      <p class="text-lg text-carbon/70 max-w-2xl mx-auto">
+        {content.whiteGlove.subtitle}
+      </p>
+    </div>
+    
+    <!-- Spots remaining indicator -->
+    <div 
+      class="bento-card p-6 mb-8 text-center"
+      data-animate
+      data-delay="1"
+    >
+      <div class="inline-flex items-center gap-3 px-6 py-3 bg-accent-gradient/10 rounded-bento">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-teal opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-accent-teal"></span>
+        </span>
+        <span class="font-mono text-sm tracking-metadata">
+          {content.whiteGlove.spotsLeft} spots restantes este mes
+        </span>
+      </div>
+    </div>
+    
+    <!-- Deliverables -->
+    <div 
+      class="bento-card p-8 mb-8"
+      data-animate
+      data-delay="2"
+    >
+      <h3 class="text-lg font-display font-bold tracking-editorial mb-6">Incluye:</h3>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {content.whiteGlove.deliverables.map((deliverable) => (
+          <li class="flex items-start gap-3">
+            <Icon name="check" class="text-accent-teal flex-shrink-0 mt-0.5" />
+            <span class="text-sm text-carbon/80">{deliverable}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <!-- CTA -->
+    <div class="text-center" data-animate data-delay="3">
+      <Button 
+        text={`${content.whiteGlove.ctaText} →`} 
+        variant="primary" 
+        href="mailto:hola@tuominio.com?subject=Reserva de spot - Desarrollo Web Express"
+        class="w-full sm:w-auto justify-center"
+      />
+      <p class="mt-4 text-xs font-mono tracking-metadata text-carbon/50">
+        Respuesta en &lt; 24hs hábiles
+      </p>
+    </div>
+  </div>
+</section>
