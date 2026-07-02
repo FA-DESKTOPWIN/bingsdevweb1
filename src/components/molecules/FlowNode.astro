@@ -1,0 +1,38 @@
+---
+interface Props {
+  label: string;
+  items: string[];
+  type: 'old' | 'new';
+  delay?: string;
+}
+
+const { label, items, type, delay = '0' } = Astro.props;
+
+const isOld = type === 'old';
+---
+
+<div 
+  class={`relative p-6 rounded-bento border ${
+    isOld 
+      ? 'bg-white/40 border-carbon/[0.08]' 
+      : 'bg-accent-gradient/5 border-accent-teal/[0.2]'
+  }`}
+  data-animate
+  data-delay={delay}
+>
+  <div class="flex items-center gap-3 mb-4">
+    <div class={`w-3 h-3 rounded-full ${isOld ? 'bg-carbon/20' : 'bg-accent-teal'}`} />
+    <span class="font-mono text-xs tracking-metadata uppercase text-carbon/60">{label}</span>
+  </div>
+  
+  <ul class="space-y-3">
+    {items.map((item) => (
+      <li class={`flex items-start gap-3 ${isOld ? 'text-carbon/60' : 'text-carbon'}`}>
+        <span class={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+          isOld ? 'bg-carbon/20' : 'bg-accent-indigo'
+        }`} />
+        <span class="text-sm leading-relaxed">{item}</span>
+      </li>
+    ))}
+  </ul>
+</div>
