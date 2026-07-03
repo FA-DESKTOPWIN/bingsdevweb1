@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -38,7 +38,6 @@ jobs:
         with:
           name: github-pages
           path: './dist'
-          retention-days: 1
 
   deploy:
     environment:
@@ -52,11 +51,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: github-pages
-          path: './dist'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: './dist'
+        uses: actions/deploy-pages@v4
